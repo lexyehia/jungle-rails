@@ -8,12 +8,12 @@
     <p><%= item.product.description %></p>
   </td>
   <td>
-    <%= item.item_price_cents %>
+    <%= humanized_money_with_symbol item.item_price %>
   </td>
   <td>
     <%= item.quantity %>
   </td>
   <td>
-    <%= item.total_price_cents %>
+    <%= humanized_money_with_symbol item.total_price %>
   </td>
 </tr>
