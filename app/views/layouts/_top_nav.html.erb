@@ -39,12 +39,18 @@
             <li><%= link_to 'Categories',  [:admin, :categories] %></li>
           </ul>
         </li>
+        <% if !cookies[:user_session] %>
         <li>
           <%= link_to 'Register', new_user_path %>
         </li>
         <li>
-          <%= link_to 'Login', new_user_path %>
+          <%= link_to 'Login', new_session_path %>
         </li>
+        <% else %>
+        <li>
+          <%= link_to 'Logout', session_path, method: :delete %>
+        </li>
+        <% end %>
         <li>
           <%= link_to cart_path do %>
             <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
