@@ -28,6 +28,10 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        cookies.encrypted[:user_session] = {
+          value: @user.id,
+          expires: 5.days.from_now
+        }
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

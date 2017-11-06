@@ -4,11 +4,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email]).authenticate(params[:password])
+    @user = User.find_by(email: params[:email]).authenticate(params[:password])
 
-    if user
+    if @user
       cookies.encrypted[:user_session] = {
-        value: user.id,
+        value: @user.id,
         expires: 5.days.from_now
       }
       redirect_to :root
@@ -18,5 +18,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    cookies.delete :user_session
+    redirect_to :root
   end
 end
