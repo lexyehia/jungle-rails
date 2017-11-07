@@ -5,4 +5,8 @@ class Review < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :product
+
+  before_save do
+    self.rating = rating.to_i
+  end
 end
