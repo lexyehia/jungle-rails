@@ -27,19 +27,22 @@
           <dt><u>REVIEWS</u></dt>
           <dd></dd>
         </dl>
-        <% @product.reviews.each do |review| %>
+        <% @product.reviews.each do |r| %>
         <dl class="dl-horizontal">
           <dt>Name</dt>
-          <dd><%= review.user.first_name %> <%= review.user.last_name[0] %>.</dd>
+          <dd><%= r.user.first_name %> <%= r.user.last_name[0] %>.</dd>
           <dt>Rating</dt>
-          <dd><span><% review.rating.times do %><%= image_tag "star.svg", class: "review-star" %><% end %></span></dd>
-          <% if !review.description.nil? %>
+          <dd><span><% r.rating.times do %><%= image_tag "star.svg", class: "review-star" %><% end %></span></dd>
+          <% if !r.description.nil? %>
           <dt>Comments</dt>
-          <dd><%= review.description %></dd>
+          <dd><%= r.description %></dd>
           <% end %>
         </dl>
         <% end %>
+              <div><%= render 'reviews/new' %></div>
+
       </div>
+
     </div>
 
   </article>
