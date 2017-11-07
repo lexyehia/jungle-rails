@@ -35,6 +35,17 @@ Rails.application.configure do
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for mailgun
+  config.action_mailer.smtp_settings = {
+    :port           => 587,
+    :address        => "smtp.mailgun.org",
+    :domain         => ENV['DOMAIN'],
+    :user_name      => ENV['USERNAME'],
+    :password       => ENV['PASSWORD'],
+    :authentication => :plain,
+  }
+
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Specifies the header that your server uses for sending files.
