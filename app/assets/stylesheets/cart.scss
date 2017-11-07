@@ -1,0 +1,11 @@
+div.empty-cart {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  p:first-child {
+    font-size: 150%;
+    font-weight: bold;
+    color: tomato;
+  }
+}
