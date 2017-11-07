@@ -37,6 +37,12 @@
           <dt>Comments</dt>
           <dd><%= r.description %></dd>
           <% end %>
+
+          <% if cookies.encrypted[:user_session] == r.user_id %>
+          <dt></dt>
+          <dd><%= link_to fa_icon('trash'), product_review_path(@product, r), method: :delete %></dd>
+          <% end %>
+
         </dl>
         <% end %>
         <% if !cookies.encrypted[:user_session].nil? %>
