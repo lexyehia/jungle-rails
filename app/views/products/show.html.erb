@@ -27,7 +27,7 @@
           <dt><u>REVIEWS</u></dt>
           <dd></dd>
         </dl>
-        <% @product.reviews.each do |r| %>
+        <% @product.reviews.order('created_at DESC').each do |r| %>
         <dl class="dl-horizontal">
           <dt>Name</dt>
           <dd><%= r.user.first_name %> <%= r.user.last_name[0] %>.</dd>
@@ -39,7 +39,9 @@
           <% end %>
         </dl>
         <% end %>
-              <div><%= render 'reviews/new' %></div>
+        <% if !cookies.encrypted[:user_session].nil? %>
+        <div><%= render 'reviews/new' %></div>
+        <% end %>
 
       </div>
 

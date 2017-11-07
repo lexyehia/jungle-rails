@@ -19,4 +19,16 @@ class ApplicationController < ActionController::Base
     cookies[:cart]
   end
 
+  def require_user
+    if cookies.encrypted[:user_session].nil?
+      render json: { errors: 'Could not find user' }, status: 400
+    else
+      @user = User.find(cookies.encrypted[:user_session])
+      if @user
+        true
+      else
+        render json: { errors: 'Could not find user' }, status: 400
+      end
+    end 
+  end 
 end
