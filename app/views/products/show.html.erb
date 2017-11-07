@@ -23,10 +23,12 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
         </dl>
+        <% if @product.reviews.count > 0 %>
         <dl class="dl-horizontal">
-          <dt><u>REVIEWS</u></dt>
-          <dd></dd>
+          <dt></dt>
+          <dd><b>REVIEWS</b></dd>
         </dl>
+        <% end %>
         <% @product.reviews.order('created_at DESC').each do |r| %>
         <dl class="dl-horizontal">
           <dt>Name</dt>
