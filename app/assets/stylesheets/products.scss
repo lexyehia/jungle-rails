@@ -40,6 +40,23 @@ main section.categories-show {
         transition: all 0.3s;
       }
 
+      div.product-rating {
+        display: flex;
+        justify-content: center;
+
+        span {
+          margin-right: 2px;
+        }
+
+        img.review-star {
+          width: 15px;
+          height: 15px;
+          margin: 0;
+        }
+      }
+
+      
+
       aside.price {
         position: absolute;
         top: 0;
@@ -85,3 +102,5 @@ main section.products-show {
     }
   }
 }
+
+

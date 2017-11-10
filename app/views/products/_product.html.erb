@@ -4,6 +4,12 @@
       <%= image_tag product.image.thumb, alt: product.name %>
       <h4><%= product.name %></h4>
     <% end %>
+    <% if product.rating %>
+      <div class="product-rating">
+        <span><%= product.rating %></span>
+        <%= image_tag "star.svg", class: "review-star catalog" %>
+      </div>
+    <% end %>
   </header>
   <p class="description">
     <%= product.description %>
@@ -20,9 +26,10 @@
   <aside class="price">
     <%= humanized_money_with_symbol product.price %>
   </aside>
-  <% if product.quantity == 0 %>
-  <aside class="soldout">
-    SOLD OUT!
-  </aside>
+
+  <% if product.soldout? %>
+    <aside class="soldout">
+      SOLD OUT!
+    </aside>
   <% end %>
 </article>

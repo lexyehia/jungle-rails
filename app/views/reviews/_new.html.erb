@@ -1,6 +1,5 @@
 <%= form_for [@product, @review] do |form| %>
 
-
         <div class="form-group">
           <%= form.label :rating %>
           <%= select("review", "rating", options_for_select(%w[1 2 3 4 5]), {include_blank: true}) %>
