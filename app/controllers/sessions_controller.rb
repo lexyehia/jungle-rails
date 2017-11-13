@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:email]).authenticate(params[:password])
+    @user = User.authenticate_with_credentials(params[:email], params[:password])
 
     if @user
       cookies.encrypted[:user_session] = {
