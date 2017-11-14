@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Visitor navigating to the product detaisl page", type: :feature, js: true do
+RSpec.feature "Visitor navigates to add cart page", type: :feature, js: true do
+
   before :each do
     @category = Category.create! name: 'Apparel'
 
@@ -15,14 +16,17 @@ RSpec.feature "Visitor navigating to the product detaisl page", type: :feature, 
     end
   end
 
-  scenario "They see a single product's details" do
+  scenario "They see all products" do
     # ACT
     visit root_path
 
     # DEBUG / VERIFY
-    all('article.product header a').first.click
     save_screenshot
 
-    expect(page).to have_css 'section.products-show', count: 1
+    find('.products article:first-child footer a:first-child').click
+
+    expect(page).to have_content 'My Cart (1)'
+
   end
+
 end
